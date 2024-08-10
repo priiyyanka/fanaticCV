@@ -1,0 +1,16 @@
+Identify Obstacles and Safe Zones
+.
+Copy code
+# Define a simple threshold to identify obstacles
+_, obstacle_mask = cv2.threshold(blurred, 150, 255, cv2.THRESH_BINARY_INV)
+
+# Find contours of the obstacles
+contours, _ = cv2.findContours(obstacle_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+# Draw contours on the original image
+cv2.drawContours(image, contours, -1, (0, 255, 0), 3)
+
+# Display the result
+cv2.imshow('Obstacles', image)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
